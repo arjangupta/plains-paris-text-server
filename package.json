@@ -5,7 +5,8 @@
   "dependencies": {
     "react": "^16.13.0",
     "react-dom": "^16.13.0",
-    "react-scripts": "^5.0.1"
+    "react-scripts": "^5.0.1",
+    "twilio": "^3.80.1"
   },
   "scripts": {
     "start": "react-scripts start",
