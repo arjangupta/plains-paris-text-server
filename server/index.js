@@ -36,19 +36,21 @@ app.get('/api/greeting', (req, res) => {
 
 app.post('/api/messages', (req, res) => {
   res.header('Content-Type', 'application/json');
-  client.messages
-    .create({
-      from: process.env.TWILIO_PHONE_NUMBER,
-      to: req.body.to,
-      body: req.body.body
-    })
-    .then(() => {
-      res.send(JSON.stringify({ success: true }));
-    })
-    .catch(err => {
-      console.log(err);
-      res.send(JSON.stringify({ success: false }));
-    });
+  // client.messages
+  //   .create({
+  //     from: process.env.TWILIO_PHONE_NUMBER,
+  //     to: '+16616993095',
+  //     body: 'Totally random message'
+  //   })
+  //   .then(() => {
+  //     res.send(JSON.stringify({ success: true }));
+  //   })
+  //   .catch(err => {
+  //     console.log(err);
+  //     res.send(JSON.stringify({ success: false }));
+  //   });
+    console.log(`Here's the request we got`);
+    console.log(req)
 });
 
 app.listen(3001, () => {
