@@ -36,21 +36,19 @@ app.get('/api/greeting', (req, res) => {
 
 app.post('/api/messages', (req, res) => {
   res.header('Content-Type', 'application/json');
-  // client.messages
-  //   .create({
-  //     from: process.env.TWILIO_PHONE_NUMBER,
-  //     to: '+16616993095',
-  //     body: 'Totally random message'
-  //   })
-  //   .then(() => {
-  //     res.send(JSON.stringify({ success: true }));
-  //   })
-  //   .catch(err => {
-  //     console.log(err);
-  //     res.send(JSON.stringify({ success: false }));
-  //   });
-    console.log(`Here's the request we got`);
-    console.log(req)
+  client.messages
+    .create({
+      from: process.env.TWILIO_PHONE_NUMBER,
+      to: req.body.phone,
+      body: `Hello, ${req.body.fullname}! You have been referred to the Plain's Paris App: <insert-url-here-when-ready>`
+    })
+    .then(() => {
+      res.send(JSON.stringify({ success: true }));
+    })
+    .catch(err => {
+      console.log(err);
+      res.send(JSON.stringify({ success: false }));
+    });
 });
 
 app.listen(3001, () => {
