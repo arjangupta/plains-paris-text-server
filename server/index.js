@@ -14,15 +14,14 @@ app.use(bodyParser.json());
 app.use(pino);
 
 var allowedOrigins = ['http://localhost:3000',
-                      'https://plains-paris-pwa.web.app/'];
+                      'https://plains-paris-pwa.web.app'];
 app.use(cors({
   origin: function(origin, callback){
     // allow requests with no origin 
     // (like mobile apps or curl requests)
     if(!origin) return callback(null, true);
     if(allowedOrigins.indexOf(origin) === -1){
-      var msg = `The CORS policy for this site does not ' +
-                'allow access from ${origin}.`;
+      var msg = `The CORS policy for this site does not allow access from ${origin}.`;
       return callback(new Error(msg), false);
     }
     return callback(null, true);
