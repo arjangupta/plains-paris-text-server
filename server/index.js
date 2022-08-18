@@ -14,7 +14,7 @@ app.use(bodyParser.json());
 app.use(pino);
 
 var allowedOrigins = ['http://localhost:3000',
-                      'http://yourapp.com'];
+                      'https://plains-paris-pwa.web.app/'];
 app.use(cors({
   origin: function(origin, callback){
     // allow requests with no origin 
@@ -59,5 +59,5 @@ app.listen(process.env.PORT || 3001, () => {
 
 // define the first route
 app.get("/", function (req, res) {
-  res.send("<h1>Hello World!</h1>")
+  res.send("<h1>Welcome to the Plain's Paris API!</h1>")
 })
