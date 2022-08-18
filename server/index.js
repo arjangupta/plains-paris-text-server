@@ -6,6 +6,7 @@ const client = require('twilio')(
   process.env.TWILIO_AUTH_TOKEN
 );
 const cors = require('cors');
+require('dotenv').config();
 
 const app = express();
 app.use(bodyParser.urlencoded({ extended: false }));
