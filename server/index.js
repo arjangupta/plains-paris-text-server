@@ -51,19 +51,12 @@ app.post('/api/messages', (req, res) => {
     });
 });
 
-app.listen(3001, () => {
+app.listen(process.env.PORT || 3001, () => {
   console.log('Express server is running on localhost:3001');
   console.log(`The TEST_VAR is ${process.env.TEST_VAR}`);
 });
-
-// use the express-static middleware
-app.use(express.static("public"))
 
 // define the first route
 app.get("/", function (req, res) {
   res.send("<h1>Hello World!</h1>")
 })
-
-// start the server listening for requests
-app.listen(process.env.PORT || 3000,
-	() => console.log("Server is running..."));
