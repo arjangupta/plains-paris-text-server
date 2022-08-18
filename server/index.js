@@ -53,8 +53,7 @@ app.post('/api/messages', (req, res) => {
 });
 
 app.listen(process.env.PORT || 3001, () => {
-  console.log('Express server is running on localhost:3001');
-  console.log(`The TEST_VAR is ${process.env.TEST_VAR}`);
+  console.log('Express server is running!');
 });
 
 // define the first route
