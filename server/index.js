@@ -61,7 +61,7 @@ app.post('/api/messages', (req, res) => {
       .create({
         from: process.env.TWILIO_PHONE_NUMBER,
         to: process.env.JUSTIN_BERRY_PHONE_NUMBER,
-        body: `Hi Justin, ${reg.body.fullname} was just referred to Plain's Paris! Their phone number is ${req.body.phone}.`
+        body: `Hi Justin, ${req.body.fullname} was just referred to Plain's Paris! Their phone number is ${req.body.phone}.`
       })
       .then(() => {
         response.success = true;
