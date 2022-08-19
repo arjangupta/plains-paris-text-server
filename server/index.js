@@ -48,6 +48,7 @@ app.post('/api/messages', (req, res) => {
     })
     .then(() => {
       referral_success = true;
+      console.log(`Successfully sent referral text`);
     })
     .catch(err => {
       console.log(err);
@@ -64,6 +65,7 @@ app.post('/api/messages', (req, res) => {
       })
       .then(() => {
         response.success = true;
+        console.log(`Successfully sent text to Plain's Paris`);
       })
       .catch(err => {
         console.log(err);
