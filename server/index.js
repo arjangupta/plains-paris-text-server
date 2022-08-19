@@ -40,7 +40,7 @@ app.post('/api/messages', (req, res) => {
     .create({
       from: process.env.TWILIO_PHONE_NUMBER,
       to: req.body.phone,
-      body: `Hello, ${req.body.fullname}! You have been referred to the Plain's Paris App: <insert-url-here-when-ready>`
+      body: `Hello, ${req.body.fullname}! You have been referred to the Plain's Paris App: https://plains-paris-pwa.web.app/`
     })
     .then(() => {
       res.send(JSON.stringify({ success: true }));
