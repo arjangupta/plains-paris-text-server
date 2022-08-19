@@ -36,6 +36,10 @@ app.get('/api/greeting', (req, res) => {
 
 app.post('/api/messages', (req, res) => {
   res.header('Content-Type', 'application/json');
+  let referral_success = false;
+  let response = {
+    success: false
+  };
   client.messages
     .create({
       from: process.env.TWILIO_PHONE_NUMBER,
@@ -43,12 +47,31 @@ app.post('/api/messages', (req, res) => {
       body: `Hello, ${req.body.fullname}! You have been referred to the Plain's Paris App: https://plains-paris-pwa.web.app/`
     })
     .then(() => {
-      res.send(JSON.stringify({ success: true }));
+      referral_success = true;
     })
     .catch(err => {
       console.log(err);
-      res.send(JSON.stringify({ success: false }));
     });
+
+    // Tell Plain's Paris about this referral
+    if (referral_success)
+    {
+      client.messages
+      .create({
+        from: process.env.TWILIO_PHONE_NUMBER,
+        to: process.env.JUSTIN_BERRY_PHONE_NUMBER,
+        body: `Hi Justin, ${reg.body.fullname} was just referred to Plain's Paris! Their phone number is ${req.body.phone}.`
+      })
+      .then(() => {
+        response.success = true;
+      })
+      .catch(err => {
+        console.log(err);
+      });
+    }
+
+    // Send the response
+    res.send(JSON.stringify(response));
 });
 
 app.listen(process.env.PORT || 3001, () => {
