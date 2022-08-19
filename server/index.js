@@ -54,6 +54,8 @@ app.post('/api/messages', (req, res) => {
       console.log(err);
     });
 
+    console.log(`referral_success is ${referral_success}`);
+
     // Tell Plain's Paris about this referral
     if (referral_success)
     {
