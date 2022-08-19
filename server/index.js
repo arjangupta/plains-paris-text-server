@@ -52,19 +52,22 @@ app.post('/api/messages', (req, res) => {
     client.messages
     .create({
       from: process.env.TWILIO_PHONE_NUMBER,
-      to: process.env.JUSTIN_BERRY_PHONE_NUMBER,
+      to: "+16616993095",
       body: `Hi Justin, ${req.body.fullname} was just referred to Plain's Paris! Their phone number is ${req.body.phone}.`
     })
     .then(() => {
       response.success = true;
       console.log(`Successfully sent text to Plain's Paris`);
+
+      // Send the response
+      res.send(JSON.stringify(response));
     })
     .catch(err => {
       console.log(err);
-    });
 
-    // Send the response
-    res.send(JSON.stringify(response));
+      // Send the response
+      res.send(JSON.stringify(response));
+    });
   })
   .catch(err => {
     console.log(err);
