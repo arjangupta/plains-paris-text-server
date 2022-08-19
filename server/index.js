@@ -36,8 +36,8 @@ app.get('/api/greeting', (req, res) => {
 
 app.post('/api/messages', (req, res) => {
   res.header('Content-Type', 'application/json');
-  let referral_success = false;
-  let response = {
+  var referral_success = false;
+  var response = {
     success: false
   };
   client.messages
